@@ -1,0 +1,9 @@
+h1{
+    text-align: center;
+}
+.styleDirector{
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}

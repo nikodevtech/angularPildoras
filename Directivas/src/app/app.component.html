@@ -1,0 +1,29 @@
+<h1>{{ title }}</h1>
+<form>
+  <label for="nombre">Nombre: </label>
+  <input type="text" name="nombre" [(ngModel)]="nombre" />
+  <br />
+  <label for="apellidos">Apellidos: </label>
+  <input type="text" name="apellidos" [(ngModel)]="apellidos" />
+  <br />
+  <label for="Cargo">Cargo: </label>
+  <input type="text" name="Cargo" [(ngModel)]="cargo" />
+  <br />
+  <input type="submit" value="Registrar" (click)="registrar()" />
+</form>
+<br /><br />
+<p *ngIf="registrado; else noRegistrado">
+  {{ mensaje }} con el nombre {{ nombre }} {{ apellidos }} y el cargo
+  <!--<span [ngStyle]="{ color: cargo == 'director'? 'red': 'black'} ">{{ cargo }}</span>-->
+  <span [ngClass]="{ styleDirector: cargo == 'director'} ">{{ cargo }}</span>
+
+</p>
+<ng-template #noRegistrado>
+  <p>Nadie registrado</p>
+</ng-template>
+<br /><br />
+<ul>
+  <li *ngFor="let entrada of entradasBlog">
+    <b style="font-size: large">{{ entrada.titulo }}</b>
+  </li>
+</ul>

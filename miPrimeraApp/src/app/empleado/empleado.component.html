@@ -1,0 +1,43 @@
+<p>Nombre y apellidos del empleado: {{ nombre }}, {{ apellido }}</p>
+<p>Edad: {{ edad < 18 ? "Menor de edad" : "Mayor de edad" }}</p>
+<p>Empresa del empleado: {{ empresa }}</p>
+<label for="empresa">Nueva empresa: </label>
+<!--
+<input
+  type="text"
+  name="empresa"
+  #empresa
+  (keyup)="(0)"
+  [disabled]="deshabilitarInput"
+  placeholder="Introduce una nueva empresa"
+/> 
+-->
+<input
+  type="text"
+  name="empresa"
+  id="empresa"
+  [(ngModel)]="empresa"
+  placeholder="Introduce una nueva empresa"
+/>
+<br /><br />
+<strong>{{ textoRegistro }}</strong>
+<br />
+<label for="registro">Registrado: </label>
+<input
+  type="radio"
+  name="registro"
+  value="registrado"
+  id="registro"
+  [checked]="empleadoRegistrado"
+  (click)="getRegistroUsuario($event)"
+/>
+<br />
+<label for="registro">No registrado: </label>
+<input
+  type="radio"
+  name="registro"
+  value="no registrado"
+  id="registro"
+  [checked]="empleadoRegistrado"
+  (click)="getRegistroUsuario($event)"
+/>

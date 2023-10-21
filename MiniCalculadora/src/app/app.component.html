@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<br>
+<label for="numero1">Primer numero: </label>
+<input type="number" id="numero1" [(ngModel)]="numero1">
+<br>
+<label for="numero2">Primer numero: </label>
+<input type="number" id="numero2" [(ngModel)]="numero2">
+<br>
+<br>
+<button (click)="sumar()">Sumar</button>
+<button (click)="restar()">Restar</button>
+<button (click)="multiplicar()">Multiplicar</button>
+<button (click)="dividir()">Dividir</button>
+<br>
+<p>Resultado: {{resultado}}</p>
