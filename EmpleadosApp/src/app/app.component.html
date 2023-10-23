@@ -1,87 +1,24 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col">
-      <h1 style="text-align: center">{{ titulo }}</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="proyectos">Proyectos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="quienes">Quienes somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacto">Contacto</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <div class="row mt-4">
-    <div class="col">
-      <form class="form-group row">
-        <div class="form-group col-md-3">
-          <label for="nombre">Nombre: </label>
-          <input
-            type="text"
-            class="form-control"
-            id="nombre"
-            name="nombre"
-            placeholder="Nombre"
-            [(ngModel)]="cuadroNombre"
-          />
-        </div>
-        <div class="form-group col-md-3">
-          <label for="apellidos">Apellido: </label>
-          <input
-            type="text"
-            class="form-control"
-            id="apellidos"
-            name="apellidos"
-            placeholder="apellidos"
-            [(ngModel)]="cuadroApellido"
-          />
-        </div>
-        <div class="form-group col-md-3">
-          <label for="nombre">Cargo: </label>
-          <input
-            type="text"
-            class="form-control"
-            id="cargo"
-            name="cargo"
-            placeholder="Cargo"
-            [(ngModel)]="cuadroCargo"
-          />
-        </div>
-        <div class="form-group col-md-3">
-          <label for="nombre">Salario: </label>
-          <input
-            type="text"
-            class="form-control"
-            id="salario"
-            name="salario"
-            placeholder="Cargo"
-            [(ngModel)]="cuadroSueldo"
-          />
-        </div>
-        <div class="col mt-3">
-          <input
-            type="submit"
-            class="btn btn-primary"
-            value="Agregar Empleado"
-            (click)="agregarEmpleado()"
-          />
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<div class="container centrado mt-5">
-  <div class="row">
-    <div class="col">
-      <div
-        class="card text-center mt-3"
-        *ngFor="let empleado of empleados; let i = index"
-      >
-        <div class="card-header">
-          <strong
-            >Empleado {{ i + 1 }}: {{ empleado.nombre }}
-            {{ empleado.apellido }}</strong
-          >
-        </div>
-        <div class="card-body">
-          Cargo: {{ empleado.cargo }}
-          <br />
-          Salario: {{ empleado.sueldo }}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</nav>
+<router-outlet></router-outlet>

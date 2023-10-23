@@ -1,0 +1,27 @@
+<div class="container centrado mt-3">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <strong>
+            <a [routerLink]="['/modifica', indice]">
+              Empleado {{ indice + 1 }}: {{ empleado.nombre }} {{ empleado.apellido }}
+            </a>
+          </strong>
+        </div>
+        <div class="card-body">
+          Cargo: {{ empleado.cargo }}
+          <br/>
+          Salario: {{ empleado.sueldo }}
+          <br/>
+          <app-caracteristicas-empleado (caracteristicasEmpleado)="addCaracteristica($event)" ></app-caracteristicas-empleado>
+          <br>
+          <ul>
+            <li *ngFor="let caracteristica of caracteristicasVector">{{ caracteristica }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

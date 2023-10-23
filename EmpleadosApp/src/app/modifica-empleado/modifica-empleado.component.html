@@ -1,0 +1,66 @@
+<div class="container justify-content-center text-center mt-3">
+    <div class="row">
+      <div class="col-12">
+          <form class="form-group row">
+              <div class="form-group col-md-3">
+                <label for="nombre">Nombre: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Nombre"
+                  [(ngModel)]="cuadroNombre"
+                />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="apellidos">Apellido: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="apellidos"
+                  name="apellidos"
+                  placeholder="apellidos"
+                  [(ngModel)]="cuadroApellido"
+                />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="nombre">Cargo: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cargo"
+                  name="cargo"
+                  placeholder="Cargo"
+                  [(ngModel)]="cuadroCargo"
+                />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="nombre">Salario: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="salario"
+                  name="salario"
+                  placeholder="Cargo"
+                  [(ngModel)]="cuadroSueldo"
+                />
+              </div>
+              <div class="col mt-3">
+                <input
+                  type="submit"
+                  class="btn btn-primary"
+                  value="Actualizar empleado"
+                  (click)="modificaEmpleado()"
+                />
+              </div>
+            </form>
+      </div>
+      <div class="col mt-3">
+        <button class="btn btn-primary" (click)="volverHome()">
+          Volver a home
+        </button>   
+      </div>
+    </div>
+  </div>
+  
