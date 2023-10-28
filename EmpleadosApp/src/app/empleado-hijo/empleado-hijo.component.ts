@@ -7,6 +7,7 @@ import { Empleado } from '../empleado.model';
   styleUrls: ['./empleado-hijo.component.css']
 })
 export class EmpleadoHijoComponent {
+
   @Input() indice: number ;
   @Input() empleado: Empleado;
 
@@ -14,5 +15,11 @@ export class EmpleadoHijoComponent {
 
   addCaracteristica(nuevaCaracteristica: string) {
     this.caracteristicasVector.push(nuevaCaracteristica);
+  }
+
+  modificarEmpleado() {
+  }
+  eliminarEmpleado() {
+    
   }
 }

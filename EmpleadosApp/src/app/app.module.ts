@@ -13,6 +13,9 @@ import { QuienesComponentComponent } from './quienes-component/quienes-component
 import { ContactoComponentComponent } from './contacto-component/contacto-component.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ModificaEmpleadoComponent } from './modifica-empleado/modifica-empleado.component';
+import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {
@@ -34,6 +37,10 @@ const appRoutes: Routes = [
   {
     path: 'modifica/:id',
     component: ModificaEmpleadoComponent
+  },
+  {
+    path: '**', //Cualquier ruta que no exista se redirige al componente error-personalizado
+    component: ErrorPersonalizadoComponent
   }
 ]
 
@@ -46,16 +53,19 @@ const appRoutes: Routes = [
     ProyectosComponentComponent,
     QuienesComponentComponent,
     ContactoComponentComponent,
-    ModificaEmpleadoComponent
+    ModificaEmpleadoComponent,
+    ErrorPersonalizadoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     ServicioEmpleadosService,
-    DataServiceEmpleadosService
+    DataServiceEmpleadosService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

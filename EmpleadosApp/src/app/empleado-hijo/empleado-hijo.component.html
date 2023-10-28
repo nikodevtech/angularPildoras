@@ -4,24 +4,42 @@
       <div class="card">
         <div class="card-header">
           <strong>
-            <a [routerLink]="['/modifica', indice]">
-              Empleado {{ indice + 1 }}: {{ empleado.nombre }} {{ empleado.apellido }}
-            </a>
+            Empleado {{ indice + 1 }}: {{ empleado.nombre }}
+            {{ empleado.apellido }}
+            <input
+              type="button"
+              value="Eliminar"
+              [routerLink]="['/modifica', indice]"
+              [queryParams]="{accion: 'eliminar'}"
+              (click)="eliminarEmpleado()"
+              class="btn btn-danger m-1"
+            />
+            <input
+              type="button"
+              value="Modificar"
+              [routerLink]="['/modifica', indice]"
+              [queryParams]="{accion: 'modificar'}"
+              (click)="modificarEmpleado()"
+              class="btn btn-primary"
+            />
           </strong>
         </div>
         <div class="card-body">
           Cargo: {{ empleado.cargo }}
-          <br/>
+          <br />
           Salario: {{ empleado.sueldo }}
-          <br/>
-          <app-caracteristicas-empleado (caracteristicasEmpleado)="addCaracteristica($event)" ></app-caracteristicas-empleado>
-          <br>
+          <br />
+          <app-caracteristicas-empleado
+            (caracteristicasEmpleado)="addCaracteristica($event)"
+          ></app-caracteristicas-empleado>
+          <br />
           <ul>
-            <li *ngFor="let caracteristica of caracteristicasVector">{{ caracteristica }}</li>
+            <li *ngFor="let caracteristica of caracteristicasVector">
+              {{ caracteristica }}
+            </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-
