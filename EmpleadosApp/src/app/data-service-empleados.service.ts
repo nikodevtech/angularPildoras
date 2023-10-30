@@ -7,17 +7,12 @@ import { DataService } from './data.service';
   providedIn: 'root',
 })
 export class DataServiceEmpleadosService {
-  empleados: Empleado[] = [
-    new Empleado('Juan', 'Perez', 'Programador', 2500),
-    new Empleado('Maria', 'Gomez', 'Secretaria', 1500),
-    new Empleado('Pedro', 'Perez', 'Director', 3000),
-    new Empleado('Carlos', 'Alvarez', 'CTO', 5500),
-  ];
+  empleados: Empleado[] = [];
 
   constructor(
     private servicioAlert: ServicioEmpleadosService,
     private dataService: DataService
-  ) {}
+  ) { }
 
   agregaEmpleadoServicio(empleado: Empleado) {
     this.servicioAlert.muestraMensaje('Empleado añadido: ' + empleado.nombre);
@@ -28,13 +23,29 @@ export class DataServiceEmpleadosService {
   buscaEmpleado(id: number): Empleado {
     return this.empleados[id];
   }
-  actualizaListaEmpleado(empleadoModificado: Empleado, id: number): void {
-    this.empleados[id] = empleadoModificado;
+  actualizaEmpleado(empleado: Empleado, id: number): void {
+    const empleadoModificado = this.empleados[id];
+    empleadoModificado.nombre = empleado.nombre;
+    empleadoModificado.apellido = empleado.apellido;
+    empleadoModificado.cargo = empleado.cargo;
+    empleadoModificado.sueldo = empleado.sueldo;
+    this.dataService.actualizarEmpleado(empleadoModificado, id);
   }
   eliminarEmpleado(id: number, empleado: Empleado): void {
     this.empleados.splice(id, 1);
     this.servicioAlert.muestraMensaje(
       `Empleado eliminado: ${empleado.nombre} ${empleado.apellido} ${empleado.cargo}`
     );
+    this.dataService.eliminarEmpleado(id);
+    if (this.empleados != null) {
+      this.dataService.guardarEmpleados(this.empleados);
+    }
+  }
+
+  obtenerEmpleados() {
+    return this.dataService.cargarEmpleados();
+  }
+  setEmpleados(empleados: Empleado[]) {
+    this.empleados = empleados;
   }
 }

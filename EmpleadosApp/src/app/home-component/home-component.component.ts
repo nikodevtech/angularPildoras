@@ -5,10 +5,9 @@ import { DataServiceEmpleadosService } from '../data-service-empleados.service';
 @Component({
   selector: 'app-home-component',
   templateUrl: './home-component.component.html',
-  styleUrls: ['./home-component.component.css']
+  styleUrls: ['./home-component.component.css'],
 })
 export class HomeComponentComponent {
-
   titulo = 'Listado Empleados';
   cuadroNombre: string = '';
   cuadroApellido: string = '';
@@ -16,8 +15,15 @@ export class HomeComponentComponent {
   cuadroSueldo: number = 0;
   empleados: Empleado[] = [];
 
-  constructor(private miServicioData: DataServiceEmpleadosService) {
-    this.empleados = this.miServicioData.empleados;
+  // Cuando se inicia el componente de la clase se inyecta la dependencia DataServiceEmpleadosService
+  constructor(private DataServiceEmpleados: DataServiceEmpleadosService) {
+    // Llamar al método obtenerEmpleados de DataServiceEmpleados y suscribirse al Observable devuelto
+    this.DataServiceEmpleados.obtenerEmpleados().subscribe(
+      // Cuando el Observable emita un valor, asignar los valores al array empleados con los datos obtenidos
+      (listaEmpleados) => {
+        this.empleados = Object.values(listaEmpleados);
+        DataServiceEmpleados.setEmpleados(this.empleados);
+      });
   }
 
   agregarEmpleado(): void {
@@ -27,6 +33,6 @@ export class HomeComponentComponent {
       this.cuadroCargo,
       this.cuadroSueldo
     );
-    this.miServicioData.agregaEmpleadoServicio(miEmpleado);
+    this.DataServiceEmpleados.agregaEmpleadoServicio(miEmpleado);
   }
 }

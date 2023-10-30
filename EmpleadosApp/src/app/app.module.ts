@@ -16,10 +16,14 @@ import { ModificaEmpleadoComponent } from './modifica-empleado/modifica-empleado
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginGuardian } from './login/guardian-login.guard';
 
 const appRoutes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponentComponent
   },
   {
@@ -32,11 +36,15 @@ const appRoutes: Routes = [
   },
   {
     path: 'contacto',
-    component: ContactoComponentComponent
+    component: ContactoComponentComponent, canActivate: [LoginGuardian]
   },
   {
     path: 'modifica/:id',
     component: ModificaEmpleadoComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**', //Cualquier ruta que no exista se redirige al componente error-personalizado
@@ -54,7 +62,8 @@ const appRoutes: Routes = [
     QuienesComponentComponent,
     ContactoComponentComponent,
     ModificaEmpleadoComponent,
-    ErrorPersonalizadoComponent
+    ErrorPersonalizadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +74,9 @@ const appRoutes: Routes = [
   providers: [
     ServicioEmpleadosService,
     DataServiceEmpleadosService,
-    DataService
+    DataService,
+    LoginService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

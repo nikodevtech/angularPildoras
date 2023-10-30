@@ -37,11 +37,10 @@ export class ModificaEmpleadoComponent {
   }
 
   volverHome() {
-    this.router.navigate(['/home']); //Usando la dependencia de Router para redirigir a la ruta
+    this.router.navigate(['/']); //Usando la dependencia de Router para redirigir a la ruta
   }
 
   accionEmpleado() {
-
 
     if(this.accion == "modificar") {
       let empleadoModificado = new Empleado(
@@ -50,11 +49,11 @@ export class ModificaEmpleadoComponent {
         this.cuadroCargo,
         this.cuadroSueldo
       )
-      this.miServicioData.actualizaListaEmpleado(empleadoModificado, this.idEmpleado);
-      this.router.navigate(['/home']);
+      this.miServicioData.actualizaEmpleado(empleadoModificado, this.idEmpleado);
+      this.router.navigate(['/']);
     } else {
       this.miServicioData.eliminarEmpleado(this.idEmpleado, this.empleados[this.idEmpleado]);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }
   }
 }
